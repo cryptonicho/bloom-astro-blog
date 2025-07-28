@@ -1,0 +1,202 @@
+---
+// Self-Care App Quiz Component
+---
+
+<div id="self-care-quiz" class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-6 border border-rose-200 my-8">
+  <h3 class="text-xl font-bold text-rose-700 mb-4 text-center">🎯 Find Your Perfect Self-Care App</h3>
+  
+  <div id="quiz-questions" class="space-y-4">
+    <div class="question" data-question="1">
+      <p class="font-semibold text-gray-800 mb-3">1. What's your biggest self-care challenge?</p>
+      <div class="space-y-2">
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q1" value="time" class="text-rose-500">
+          <span>I don't have enough time for self-care</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q1" value="routine" class="text-rose-500">
+          <span>I struggle to build consistent habits</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q1" value="overwhelm" class="text-rose-500">
+          <span>I feel overwhelmed and don't know where to start</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q1" value="motivation" class="text-rose-500">
+          <span>I lose motivation quickly</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="question hidden" data-question="2">
+      <p class="font-semibold text-gray-800 mb-3">2. What type of self-care activities appeal to you most?</p>
+      <div class="space-y-2">
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q2" value="planning" class="text-rose-500">
+          <span>Planning and organizing my wellness routine</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q2" value="meditation" class="text-rose-500">
+          <span>Meditation and mindfulness practices</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q2" value="journaling" class="text-rose-500">
+          <span>Journaling and self-reflection</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q2" value="variety" class="text-rose-500">
+          <span>A variety of different activities</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="question hidden" data-question="3">
+      <p class="font-semibold text-gray-800 mb-3">3. How do you prefer to access your self-care tools?</p>
+      <div class="space-y-2">
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q3" value="web" class="text-rose-500">
+          <span>Web browser (computer and mobile)</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q3" value="mobile" class="text-rose-500">
+          <span>Mobile app only</span>
+        </label>
+        <label class="flex items-center space-x-3 cursor-pointer">
+          <input type="radio" name="q3" value="both" class="text-rose-500">
+          <span>Both web and mobile options</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex justify-between items-center">
+    <button id="prev-btn" class="hidden px-4 py-2 text-rose-600 hover:text-rose-700 font-medium">
+      ← Previous
+    </button>
+    <button id="next-btn" class="px-6 py-3 bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+      Next →
+    </button>
+  </div>
+
+  <div id="quiz-result" class="hidden mt-6 p-4 bg-white rounded-lg border border-rose-300">
+    <div class="text-center">
+      <h4 class="text-lg font-bold text-rose-700 mb-2">🌟 Your Perfect Match: Bloom!</h4>
+      <p class="text-gray-700 mb-4">Based on your answers, Bloom Self-Care Planner is the ideal app for you. Here's why:</p>
+      <ul id="recommendation-reasons" class="text-left text-sm text-gray-600 mb-4 space-y-1">
+        <!-- Reasons will be populated by JavaScript -->
+      </ul>
+      <a href="https://www.selfcareplanner.app/?autoQuiz=true" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+        Try Bloom Free →
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentQuestion = 1;
+    const totalQuestions = 3;
+    const answers = {};
+
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const questions = document.querySelectorAll('.question');
+    const result = document.getElementById('quiz-result');
+
+    // Update button states
+    function updateButtons() {
+      const currentQuestionEl = document.querySelector(`[data-question="${currentQuestion}"]`);
+      const selectedAnswer = currentQuestionEl.querySelector('input[type="radio"]:checked');
+      
+      nextBtn.disabled = !selectedAnswer;
+      prevBtn.style.display = currentQuestion > 1 ? 'block' : 'none';
+      
+      if (currentQuestion === totalQuestions && selectedAnswer) {
+        nextBtn.textContent = 'Get My Recommendation →';
+      } else {
+        nextBtn.textContent = 'Next →';
+      }
+    }
+
+    // Show question
+    function showQuestion(questionNum) {
+      questions.forEach(q => q.classList.add('hidden'));
+      const questionEl = document.querySelector(`[data-question="${questionNum}"]`);
+      if (questionEl) {
+        questionEl.classList.remove('hidden');
+      }
+      updateButtons();
+    }
+
+    // Add event listeners to radio buttons
+    questions.forEach(question => {
+      const radioButtons = question.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach(radio => {
+        radio.addEventListener('change', updateButtons);
+      });
+    });
+
+    // Next button click
+    nextBtn.addEventListener('click', function() {
+      const currentQuestionEl = document.querySelector(`[data-question="${currentQuestion}"]`);
+      const selectedAnswer = currentQuestionEl.querySelector('input[type="radio"]:checked');
+      
+      if (selectedAnswer) {
+        answers[`q${currentQuestion}`] = selectedAnswer.value;
+        
+        if (currentQuestion < totalQuestions) {
+          currentQuestion++;
+          showQuestion(currentQuestion);
+        } else {
+          showResult();
+        }
+      }
+    });
+
+    // Previous button click
+    prevBtn.addEventListener('click', function() {
+      if (currentQuestion > 1) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    });
+
+    // Show result
+    function showResult() {
+      document.getElementById('quiz-questions').classList.add('hidden');
+      document.querySelector('.flex.justify-between').classList.add('hidden');
+      result.classList.remove('hidden');
+
+      // Generate personalized reasons
+      const reasons = [];
+      
+      if (answers.q1 === 'time') {
+        reasons.push('✅ Bloom is web-based, so you can access it quickly from your computer during work breaks');
+      } else if (answers.q1 === 'routine') {
+        reasons.push('✅ Bloom helps you build consistent self-care habits with gentle daily reminders');
+      } else if (answers.q1 === 'overwhelm') {
+        reasons.push('✅ Bloom provides a simple, calming interface that reduces overwhelm');
+      } else if (answers.q1 === 'motivation') {
+        reasons.push('✅ Bloom encourages you gently without pressure, helping maintain long-term motivation');
+      }
+
+      if (answers.q2 === 'planning') {
+        reasons.push('✅ Bloom excels at personalized self-care planning and organization');
+      } else if (answers.q2 === 'variety') {
+        reasons.push('✅ Bloom offers diverse self-care activities across multiple wellness dimensions');
+      }
+
+      if (answers.q3 === 'web' || answers.q3 === 'both') {
+        reasons.push('✅ Bloom works perfectly on web browsers, accessible from any device');
+      }
+
+      reasons.push('✅ Completely free with no ads and full privacy protection');
+
+      const reasonsList = document.getElementById('recommendation-reasons');
+      reasonsList.innerHTML = reasons.map(reason => `<li>${reason}</li>`).join('');
+    }
+
+    // Initialize
+    showQuestion(1);
+  });
+</script>
