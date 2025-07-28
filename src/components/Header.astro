@@ -2,7 +2,7 @@
 // Header component for blog
 ---
 
-<header class="w-full py-2 md:py-2.5 px-4 md:px-6 bg-white/90 backdrop-blur-xl sticky top-0 z-50 border-b border-rose-100/50 shadow-sm">
+<header class="w-full py-2 md:py-2.5 px-4 md:px-6 bg-white/90 backdrop-blur-xl sticky top-0 z-50 border-b border-rose-100/50" style="box-shadow: 0 2px 10px -2px hsl(0 0% 0% / 0.1);">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <!-- Logo -->
     <div class="flex-shrink-0">
@@ -10,31 +10,31 @@
         <img 
           src="/lovable-uploads/892dba72-5894-4898-a1ee-3c5cfd4f18c6.png" 
           alt="Bloom" 
-          class="h-16 md:h-18 lg:h-20 w-auto transition-all duration-300 hover:scale-105 cursor-pointer -my-2 md:-my-2.5"
+          class="h-16 md:h-[72px] lg:h-20 w-auto transition-all duration-300 hover:scale-105 cursor-pointer -my-2 md:-my-2.5"
           loading="eager"
           decoding="async"
         />
       </a>
     </div>
 
-    <!-- Desktop Navigation - Center -->
+    <!-- Desktop Navigation - Center (only when not signed in) -->
     <nav class="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
       <div class="flex items-center space-x-8 xl:space-x-10">
         <a 
           href="https://www.selfcareplanner.app/#how-it-works"
-          class="text-stone-600 hover:text-rose-600 transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm tracking-wide"
         >
           How it Works
         </a>
         <a 
           href="/blog"
-          class="text-stone-600 hover:text-rose-600 transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm tracking-wide"
         >
           Blog
         </a>
         <a 
           href="https://www.selfcareplanner.app/#faq"
-          class="text-stone-600 hover:text-rose-600 transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm tracking-wide"
         >
           FAQ
         </a>
@@ -42,16 +42,17 @@
     </nav>
 
     <!-- Actions -->
-    <div class="flex items-center gap-3 md:gap-4">
+    <div class="flex items-center gap-3 md:gap-4 h-full">
       <a 
         href="https://www.selfcareplanner.app"
-        class="hidden sm:inline-flex text-stone-600 hover:text-rose-600 transition-all duration-300 font-medium text-sm md:text-base px-4 md:px-5 py-2.5 md:py-3 rounded-lg hover:bg-rose-50/50 tracking-wide"
+        class="hidden sm:inline-flex text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm md:text-base px-4 md:px-5 py-2.5 md:py-3 h-auto rounded-lg hover:bg-rose-50/50 tracking-wide"
       >
         Sign In
       </a>
       <a 
         href="https://www.selfcareplanner.app/?autoQuiz=true"
-        class="hidden lg:inline-flex bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border-0 tracking-wide group min-h-[44px] items-center"
+        class="hidden lg:inline-flex bg-gradient-to-r from-rose-400 to-pink-500 hover:from-rose-500 hover:to-pink-600 text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold rounded-full transform hover:scale-105 transition-all duration-300 border-0 h-auto tracking-wide group min-h-[44px] items-center"
+        style="box-shadow: 0 10px 30px -5px hsl(0 50% 50% / 0.3), 0 5px 15px -3px hsl(0 50% 50% / 0.2);"
       >
         Begin Your Journey 
         <span class="group-hover:rotate-12 transition-transform duration-300 ml-2">✨</span>
@@ -60,7 +61,7 @@
       <!-- Mobile menu button -->
       <button 
         id="mobile-menu-button"
-        class="lg:hidden h-10 w-10 flex items-center justify-center text-stone-600 hover:text-rose-600 hover:bg-rose-50/50 rounded-md"
+        class="lg:hidden h-10 w-10 flex items-center justify-center text-stone-600 hover:text-rose-500 hover:bg-rose-50/50 rounded-md"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -72,12 +73,12 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden lg:hidden">
     <div class="px-4 pt-2 pb-3 space-y-1">
-      <a href="https://www.selfcareplanner.app/#how-it-works" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-600 hover:bg-rose-50 rounded-md">How it Works</a>
-      <a href="/blog" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-600 hover:bg-rose-50 rounded-md">Blog</a>
-      <a href="https://www.selfcareplanner.app/#faq" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-600 hover:bg-rose-50 rounded-md">FAQ</a>
+      <a href="https://www.selfcareplanner.app/#how-it-works" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">How it Works</a>
+      <a href="/blog" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">Blog</a>
+      <a href="https://www.selfcareplanner.app/#faq" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">FAQ</a>
       <div class="pt-4 pb-3 border-t border-rose-100">
-        <a href="https://www.selfcareplanner.app" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-600 hover:bg-rose-50 rounded-md">Sign In</a>
-        <a href="https://www.selfcareplanner.app/?autoQuiz=true" class="block mt-2 mx-3 px-4 py-3 bg-gradient-to-r from-rose-400 to-pink-500 text-white text-center font-semibold rounded-full">Begin Your Journey ✨</a>
+        <a href="https://www.selfcareplanner.app" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">Sign In</a>
+        <a href="https://www.selfcareplanner.app/?autoQuiz=true" class="block mt-2 mx-3 px-4 py-3 bg-gradient-to-r from-rose-400 to-pink-500 text-white text-center font-semibold rounded-full" style="box-shadow: 0 10px 30px -5px hsl(0 50% 50% / 0.3), 0 5px 15px -3px hsl(0 50% 50% / 0.2);">Begin Your Journey ✨</a>
       </div>
     </div>
   </div>
