@@ -4,6 +4,12 @@ const posts = await Astro.glob('./*.mdx');
 const sortedPosts = posts.sort((a, b) => 
   new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
 );
+
+// Transform URLs to match the expected format
+const postsWithUrls = sortedPosts.map(post => ({
+  ...post,
+  url: `/blog${post.url}`
+}));
 ---
 
 <html lang="en">
@@ -17,7 +23,7 @@ const sortedPosts = posts.sort((a, b) =>
   <div class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-4xl font-bold text-rose-600 mb-8">Bloom Blog</h1>
     <div class="space-y-6">
-      {sortedPosts.map((post) => (
+      {postsWithUrls.map((post) => (
         <article class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
           <h2 class="text-2xl font-semibold mb-2">
             <a href={post.url} class="text-gray-900 hover:text-rose-600 transition-colors">
