@@ -125,7 +125,7 @@
     }
 
     // Show question
-    function showQuestion(questionNum) {
+    function showQuestion(questionNum: number) {
       questions.forEach(q => q.classList.add('hidden'));
       const questionEl = document.querySelector(`[data-question="${questionNum}"]`);
       if (questionEl) {
