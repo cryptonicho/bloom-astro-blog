@@ -5,11 +5,8 @@ const sortedPosts = posts.sort((a, b) =>
   new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
 );
 
-// Transform URLs to match the expected format
-const postsWithUrls = sortedPosts.map(post => ({
-  ...post,
-  url: `/blog${post.url}`
-}));
+// Use original URLs since we're on the Astro domain directly
+const postsWithUrls = sortedPosts;
 ---
 
 <html lang="en">
