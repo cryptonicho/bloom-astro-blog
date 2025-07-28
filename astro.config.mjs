@@ -8,6 +8,5 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   site: 'https://blog-content.selfcareplanner.app',
-  base: '/blog',
   trailingSlash: 'never'
 });
