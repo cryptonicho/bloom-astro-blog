@@ -96,7 +96,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     let currentQuestion = 1;
     const totalQuestions = 3;
-    const answers = {};
+    const answers: Record<string, string> = {};
 
     const nextBtn = document.getElementById('next-btn');
     const prevBtn = document.getElementById('prev-btn');
@@ -106,15 +106,21 @@
     // Update button states
     function updateButtons() {
       const currentQuestionEl = document.querySelector(`[data-question="${currentQuestion}"]`);
+      if (!currentQuestionEl) return;
+      
       const selectedAnswer = currentQuestionEl.querySelector('input[type="radio"]:checked');
       
-      nextBtn.disabled = !selectedAnswer;
-      prevBtn.style.display = currentQuestion > 1 ? 'block' : 'none';
+      if (nextBtn) {
+        (nextBtn as HTMLButtonElement).disabled = !selectedAnswer;
+        if (currentQuestion === totalQuestions && selectedAnswer) {
+          nextBtn.textContent = 'Get My Recommendation →';
+        } else {
+          nextBtn.textContent = 'Next →';
+        }
+      }
       
-      if (currentQuestion === totalQuestions && selectedAnswer) {
-        nextBtn.textContent = 'Get My Recommendation →';
-      } else {
-        nextBtn.textContent = 'Next →';
+      if (prevBtn) {
+        prevBtn.style.display = currentQuestion > 1 ? 'block' : 'none';
       }
     }
 
@@ -137,38 +143,47 @@
     });
 
     // Next button click
-    nextBtn.addEventListener('click', function() {
-      const currentQuestionEl = document.querySelector(`[data-question="${currentQuestion}"]`);
-      const selectedAnswer = currentQuestionEl.querySelector('input[type="radio"]:checked');
-      
-      if (selectedAnswer) {
-        answers[`q${currentQuestion}`] = selectedAnswer.value;
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        const currentQuestionEl = document.querySelector(`[data-question="${currentQuestion}"]`);
+        if (!currentQuestionEl) return;
         
-        if (currentQuestion < totalQuestions) {
-          currentQuestion++;
-          showQuestion(currentQuestion);
-        } else {
-          showResult();
+        const selectedAnswer = currentQuestionEl.querySelector('input[type="radio"]:checked') as HTMLInputElement;
+        
+        if (selectedAnswer) {
+          answers[`q${currentQuestion}`] = selectedAnswer.value;
+          
+          if (currentQuestion < totalQuestions) {
+            currentQuestion++;
+            showQuestion(currentQuestion);
+          } else {
+            showResult();
+          }
         }
-      }
-    });
+      });
+    }
 
     // Previous button click
-    prevBtn.addEventListener('click', function() {
-      if (currentQuestion > 1) {
-        currentQuestion--;
-        showQuestion(currentQuestion);
-      }
-    });
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        if (currentQuestion > 1) {
+          currentQuestion--;
+          showQuestion(currentQuestion);
+        }
+      });
+    }
 
     // Show result
     function showResult() {
-      document.getElementById('quiz-questions').classList.add('hidden');
-      document.querySelector('.flex.justify-between').classList.add('hidden');
-      result.classList.remove('hidden');
+      const questionsEl = document.getElementById('quiz-questions');
+      const buttonsEl = document.querySelector('.flex.justify-between');
+      
+      if (questionsEl) questionsEl.classList.add('hidden');
+      if (buttonsEl) buttonsEl.classList.add('hidden');
+      if (result) result.classList.remove('hidden');
 
       // Generate personalized reasons
-      const reasons = [];
+      const reasons: string[] = [];
       
       if (answers.q1 === 'time') {
         reasons.push('✅ Bloom is web-based, so you can access it quickly from your computer during work breaks');
@@ -193,7 +208,9 @@
       reasons.push('✅ Completely free with no ads and full privacy protection');
 
       const reasonsList = document.getElementById('recommendation-reasons');
-      reasonsList.innerHTML = reasons.map(reason => `<li>${reason}</li>`).join('');
+      if (reasonsList) {
+        reasonsList.innerHTML = reasons.map(reason => `<li>${reason}</li>`).join('');
+      }
     }
 
     // Initialize
