@@ -39,7 +39,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <header class="mb-8">
       <h1 class="text-4xl font-bold mb-4 text-rose-600">{title}</h1>
       <div class="text-gray-600">
-        <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString()}</time>
+        <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
         <span class="mx-2">·</span>
         <span>{author}</span>
       </div>
