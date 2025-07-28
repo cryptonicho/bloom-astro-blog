@@ -6,7 +6,9 @@ import vercel from '@astrojs/vercel/static';
 export default defineConfig({
   integrations: [mdx(), tailwind()],
   output: 'static',
-  adapter: vercel(),
+  adapter: vercel({
+    analytics: true
+  }),
   site: 'https://blog-content.selfcareplanner.app',
   trailingSlash: 'never'
 });

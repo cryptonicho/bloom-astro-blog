@@ -1,8 +1,45 @@
 ---
-// Header component for blog
+// Header component for blog - exact copy of homepage header styling
 ---
 
-<header class="w-full py-2 md:py-2.5 px-4 md:px-6 bg-white/90 backdrop-blur-xl sticky top-0 z-50 border-b border-rose-100/50" style="box-shadow: 0 2px 10px -2px hsl(0 0% 0% / 0.1);">
+<style>
+  :root {
+    --primary: 330 81% 60%;
+    --shadow-soft: 0 2px 10px -2px hsl(0 0% 0% / 0.1);
+    --shadow-elegant: 0 4px 20px -2px hsl(var(--primary) / 0.1);
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.15);
+  }
+  
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(330 65% 73%), hsl(328 69% 65%));
+  }
+  
+  .bg-gradient-primary:hover {
+    background: linear-gradient(135deg, hsl(330 65% 68%), hsl(328 69% 60%));
+  }
+  
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+  
+  .hover\:text-primary:hover {
+    color: hsl(var(--primary));
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .hover\:shadow-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+</style>
+
+<header class="w-full py-2 md:py-2.5 px-4 md:px-6 bg-white/90 backdrop-blur-xl sticky top-0 z-50 border-b border-rose-100/50 shadow-soft">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <!-- Logo -->
     <div class="flex-shrink-0">
@@ -17,24 +54,24 @@
       </a>
     </div>
 
-    <!-- Desktop Navigation - Center (only when not signed in) -->
+    <!-- Desktop Navigation - Center -->
     <nav class="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
       <div class="flex items-center space-x-8 xl:space-x-10">
         <a 
           href="https://www.selfcareplanner.app/#how-it-works"
-          class="text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm tracking-wide"
         >
           How it Works
         </a>
         <a 
           href="/blog"
-          class="text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm tracking-wide"
         >
           Blog
         </a>
         <a 
           href="https://www.selfcareplanner.app/#faq"
-          class="text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm tracking-wide"
         >
           FAQ
         </a>
@@ -45,16 +82,16 @@
     <div class="flex items-center gap-3 md:gap-4 h-full">
       <a 
         href="https://www.selfcareplanner.app"
-        class="hidden sm:inline-flex text-stone-600 hover:text-rose-500 transition-all duration-300 font-medium text-sm md:text-base px-4 md:px-5 py-2.5 md:py-3 h-auto rounded-lg hover:bg-rose-50/50 tracking-wide"
+        class="hidden sm:inline-flex text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm md:text-base px-4 md:px-5 py-2.5 md:py-3 h-auto rounded-lg hover:bg-rose-50/50 tracking-wide"
       >
         Sign In
       </a>
       <a 
         href="https://www.selfcareplanner.app/?autoQuiz=true"
-        class="hidden lg:inline-flex text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold rounded-full transform hover:scale-105 transition-all duration-300 border-0 h-auto tracking-wide group min-h-[44px] items-center"
-        style="background: linear-gradient(135deg, #fda4af, #fbbcf2); box-shadow: 0 4px 20px -2px hsla(330, 80%, 60%, 0.3); transition: all 0.3s ease;"
-        onmouseover="this.style.boxShadow='0 0 20px hsla(330, 80%, 60%, 0.4)'"
-        onmouseout="this.style.boxShadow='0 4px 20px -2px hsla(330, 80%, 60%, 0.3)'"
+        class="hidden lg:inline-flex bg-gradient-primary text-white py-2 md:py-2.5 text-sm md:text-base font-semibold rounded-full transform hover:scale-105 transition-all duration-300 border-0 h-auto tracking-wide group items-center"
+        style="padding-left: 1.25rem; padding-right: 2.25rem; box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.08); min-height: 44px;"
+        onmouseover="this.style.boxShadow='0 6px 20px 0 rgba(236, 72, 153, 0.4), 0 2px 4px 0 rgba(0, 0, 0, 0.08)'"
+        onmouseout="this.style.boxShadow='0 4px 14px 0 rgba(236, 72, 153, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.08)'"
       >
         Begin Your Journey 
         <span class="group-hover:rotate-12 transition-transform duration-300 ml-2">✨</span>
@@ -63,7 +100,7 @@
       <!-- Mobile menu button -->
       <button 
         id="mobile-menu-button"
-        class="lg:hidden h-10 w-10 flex items-center justify-center text-stone-600 hover:text-rose-500 hover:bg-rose-50/50 rounded-md"
+        class="lg:hidden h-10 w-10 flex items-center justify-center text-stone-600 hover:text-primary hover:bg-rose-50/50 rounded-md"
       >
         <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -75,12 +112,12 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden lg:hidden">
     <div class="px-4 pt-2 pb-3 space-y-1">
-      <a href="https://www.selfcareplanner.app/#how-it-works" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">How it Works</a>
-      <a href="/blog" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">Blog</a>
-      <a href="https://www.selfcareplanner.app/#faq" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">FAQ</a>
+      <a href="https://www.selfcareplanner.app/#how-it-works" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-primary hover:bg-rose-50 rounded-md">How it Works</a>
+      <a href="/blog" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-primary hover:bg-rose-50 rounded-md">Blog</a>
+      <a href="https://www.selfcareplanner.app/#faq" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-primary hover:bg-rose-50 rounded-md">FAQ</a>
       <div class="pt-4 pb-3 border-t border-rose-100">
-        <a href="https://www.selfcareplanner.app" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-rose-500 hover:bg-rose-50 rounded-md">Sign In</a>
-        <a href="https://www.selfcareplanner.app/?autoQuiz=true" class="block mt-2 mx-3 px-4 py-3 text-white text-center font-semibold rounded-full" style="background: linear-gradient(135deg, #fda4af, #fbbcf2); box-shadow: 0 4px 20px -2px hsla(330, 80%, 60%, 0.3);">Begin Your Journey ✨</a>
+        <a href="https://www.selfcareplanner.app" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-primary hover:bg-rose-50 rounded-md">Sign In</a>
+        <a href="https://www.selfcareplanner.app/?autoQuiz=true" class="block mt-2 mx-3 px-5 py-2.5 bg-gradient-primary text-white text-center font-semibold rounded-full" style="box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.08);">Begin Your Journey ✨</a>
       </div>
     </div>
   </div>
