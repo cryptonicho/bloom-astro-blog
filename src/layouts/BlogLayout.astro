@@ -15,6 +15,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="description" content={description}>
   <link rel="canonical" href={canonicalURL}>
   
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/bloom-favicon.png?v=6" />
+  <link rel="apple-touch-icon" href="/bloom-favicon.png" />
+  
   <meta property="og:type" content="article">
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
