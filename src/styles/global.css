@@ -19,4 +19,8 @@
   body {
     @apply antialiased;
   }
+  
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
 }
