@@ -5,18 +5,20 @@
 <style>
   :root {
     --primary: 330 81% 60%;
+    --rose-300: 352 95% 81%;
+    --pink-400: 328 87% 67%;
     --shadow-soft: 0 2px 10px -2px hsl(0 0% 0% / 0.1);
     --shadow-elegant: 0 4px 20px -2px hsl(var(--primary) / 0.1);
     --shadow-glow: 0 0 20px hsl(var(--primary) / 0.15);
   }
   
   .bg-gradient-primary {
-    background: linear-gradient(135deg, hsl(330 65% 73%), hsl(328 69% 65%));
+    background: linear-gradient(135deg, hsl(var(--rose-300)), hsl(var(--pink-400)));
   }
   
   .bg-gradient-primary:hover,
   .hover\\:bg-gradient-hover:hover {
-    background: linear-gradient(135deg, hsl(330 65% 68%), hsl(328 69% 60%));
+    background: linear-gradient(135deg, hsl(352 95% 76%), hsl(328 87% 62%));
   }
   
   .text-primary {
