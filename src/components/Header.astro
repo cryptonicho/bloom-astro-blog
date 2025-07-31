@@ -14,7 +14,8 @@
     background: linear-gradient(135deg, hsl(330 65% 73%), hsl(328 69% 65%));
   }
   
-  .bg-gradient-primary:hover {
+  .bg-gradient-primary:hover,
+  .hover\\:bg-gradient-hover:hover {
     background: linear-gradient(135deg, hsl(330 65% 68%), hsl(328 69% 60%));
   }
   
@@ -47,7 +48,7 @@
         <img 
           src="/lovable-uploads/892dba72-5894-4898-a1ee-3c5cfd4f18c6.png" 
           alt="Bloom" 
-          class="h-16 md:h-[72px] lg:h-20 w-auto transition-all duration-300 hover:scale-105 cursor-pointer -my-2 md:-my-2.5"
+          class="h-16 md:h-18 lg:h-20 w-auto transition-all duration-300 hover:scale-105 cursor-pointer -my-2 md:-my-2.5"
           loading="eager"
           decoding="async"
         />
@@ -59,19 +60,19 @@
       <div class="flex items-center space-x-8 xl:space-x-10">
         <a 
           href="https://www.selfcareplanner.app/#how-it-works"
-          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-base md:text-sm tracking-wide"
         >
           How it Works
         </a>
         <a 
           href="/blog"
-          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-base md:text-sm tracking-wide"
         >
           Blog
         </a>
         <a 
           href="https://www.selfcareplanner.app/#faq"
-          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-sm tracking-wide"
+          class="text-stone-600 hover:text-primary transition-all duration-300 font-medium text-base md:text-sm tracking-wide"
         >
           FAQ
         </a>
@@ -82,10 +83,7 @@
     <div class="flex items-center gap-3 md:gap-4 h-full">
       <a 
         href="https://www.selfcareplanner.app/?autoQuiz=true"
-        class="hidden sm:inline-flex bg-gradient-primary text-white py-2 md:py-2.5 text-sm md:text-base font-semibold rounded-full transform hover:scale-105 transition-all duration-300 border-0 h-auto tracking-wide group items-center"
-        style="padding-left: 1.25rem; padding-right: 2.25rem; box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.08); min-height: 44px;"
-        onmouseover="this.style.boxShadow='0 6px 20px 0 rgba(236, 72, 153, 0.4), 0 2px 4px 0 rgba(0, 0, 0, 0.08)'"
-        onmouseout="this.style.boxShadow='0 4px 14px 0 rgba(236, 72, 153, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.08)'"
+        class="hidden lg:inline-flex bg-gradient-primary hover:bg-gradient-hover text-white px-4 md:px-6 lg:px-8 py-2.5 md:py-3 text-sm md:text-base font-semibold rounded-full shadow-elegant hover:shadow-glow transform hover:scale-105 transition-all duration-300 border-0 h-auto tracking-wide group min-h-[44px]"
       >
         Begin Your Journey 
         <span class="group-hover:rotate-12 transition-transform duration-300 ml-2">✨</span>
@@ -110,7 +108,7 @@
       <a href="/blog" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-primary hover:bg-rose-50 rounded-md">Blog</a>
       <a href="https://www.selfcareplanner.app/#faq" class="block px-3 py-2 text-base font-medium text-stone-600 hover:text-primary hover:bg-rose-50 rounded-md">FAQ</a>
       <div class="pt-4 pb-3 border-t border-rose-100">
-        <a href="https://www.selfcareplanner.app/?autoQuiz=true" class="block mx-3 px-5 py-2.5 bg-gradient-primary text-white text-center font-semibold rounded-full" style="box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.08);">Begin Your Journey ✨</a>
+        <a href="https://www.selfcareplanner.app/?autoQuiz=true" class="block mx-3 px-6 py-3 bg-gradient-primary hover:bg-gradient-hover text-white text-center font-semibold rounded-full shadow-elegant hover:shadow-glow transform hover:scale-105 transition-all duration-300 border-0">Begin Your Journey ✨</a>
       </div>
     </div>
   </div>
