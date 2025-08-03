@@ -63,7 +63,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              <time datetime={publishDate} class="publish-date" data-static-date={publishDate}>{new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
             </div>
             <div class="flex items-center gap-2">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,5 +115,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       </div>
     </article>
   </main>
+
+  <script>
+    // Update publish date dynamically for posts that should show current date
+    if (typeof window !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', () => {
+        const publishDateElement = document.querySelector('.publish-date');
+        const staticDate = publishDateElement?.getAttribute('data-static-date');
+        
+        // Check if this is the best-self-care-apps post by checking the URL
+        if (window.location.pathname.includes('best-self-care-apps') && publishDateElement) {
+          const currentDate = new Date();
+          const currentYear = currentDate.getFullYear();
+          const currentMonth = currentDate.getMonth();
+          
+          // Set to the 1st of current month
+          const dynamicDate = new Date(currentYear, currentMonth, 1);
+          
+          publishDateElement.textContent = dynamicDate.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          });
+          
+          // Update the datetime attribute as well
+          publishDateElement.setAttribute('datetime', dynamicDate.toISOString().split('T')[0]);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
