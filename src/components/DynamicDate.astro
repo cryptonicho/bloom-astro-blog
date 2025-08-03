@@ -1,0 +1,58 @@
+---
+export interface Props {
+  format?: 'full' | 'year';
+  className?: string;
+}
+
+const { format = 'full', className = '' } = Astro.props;
+---
+
+<span class={`dynamic-date ${className}`} data-format={format}>
+  {format === 'year' ? '2025' : 'January 2025'}
+</span>
+
+<script>
+  // Update all dynamic dates when the page loads
+  if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentDate = new Date();
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const currentMonth = monthNames[currentDate.getMonth()];
+      const currentYear = currentDate.getFullYear();
+      
+      // Update all dynamic date spans
+      const dateElements = document.querySelectorAll('.dynamic-date');
+      dateElements.forEach((element) => {
+        const format = element.getAttribute('data-format');
+        if (format === 'year') {
+          element.textContent = currentYear.toString();
+        } else {
+          element.textContent = `${currentMonth} ${currentYear}`;
+        }
+      });
+      
+      // Update the main H1 title
+      const h1 = document.querySelector('h1');
+      if (h1 && h1.textContent) {
+        h1.textContent = h1.textContent.replace(/2025/g, currentYear.toString());
+      }
+      
+      // Update meta tags
+      const updateMetaContent = (selector, oldText, newText) => {
+        const meta = document.querySelector(selector);
+        if (meta && meta.getAttribute('content')) {
+          meta.setAttribute('content', meta.getAttribute('content').replace(oldText, newText));
+        }
+      };
+      
+      updateMetaContent('meta[name="description"]', 'January 2025', `${currentMonth} ${currentYear}`);
+      updateMetaContent('meta[property="og:description"]', 'January 2025', `${currentMonth} ${currentYear}`);
+      updateMetaContent('meta[name="twitter:description"]', 'January 2025', `${currentMonth} ${currentYear}`);
+      
+      // Update document title
+      if (document.title) {
+        document.title = document.title.replace(/2025/g, currentYear.toString());
+      }
+    });
+  }
+</script>

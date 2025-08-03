@@ -8,7 +8,8 @@ tags: ['self-care', 'apps', 'wellness', 'mental-health']
 image: '/lovable-uploads/image-selfcare-new.jpg'
 ---
 
-import SelfCareQuiz from '../components/SelfCareQuiz.astro'; 
+import SelfCareQuiz from '../components/SelfCareQuiz.astro';
+import DynamicDate from '../components/DynamicDate.astro'; 
 
 ## 🌟 Find Your Perfect Self Care App 
 
@@ -16,9 +17,9 @@ import SelfCareQuiz from '../components/SelfCareQuiz.astro';
 
 <SelfCareQuiz />
 
-## ✨ In a nutshell: Which self care apps are actually worth using in 2025?
+## ✨ In a nutshell: Which self care apps are actually worth using in <DynamicDate format="year" />?
 
-Here are our top 9 recommendations as of January 2025:
+Here are our top 9 recommendations as of <DynamicDate />:
 
 <div class="hidden md:block overflow-x-auto">
 
