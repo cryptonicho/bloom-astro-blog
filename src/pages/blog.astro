@@ -7,9 +7,6 @@ const sortedPosts = posts.sort((a, b) =>
   new Date(b.frontmatter.publishDate).getTime() - new Date(a.frontmatter.publishDate).getTime()
 );
 
-// Use original URLs since we're on the Astro domain directly
-const postsWithUrls = sortedPosts;
-
 // Get featured post (first post)
 const featuredPost = sortedPosts[0];
 const otherPosts = sortedPosts.slice(1);

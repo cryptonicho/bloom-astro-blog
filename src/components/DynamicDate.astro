@@ -38,7 +38,7 @@ const { format = 'full', className = '' } = Astro.props;
       }
       
       // Update meta tags
-      const updateMetaContent = (selector, oldText, newText) => {
+      const updateMetaContent = (selector: string, oldText: string, newText: string) => {
         const meta = document.querySelector(selector);
         if (meta && meta.getAttribute('content')) {
           meta.setAttribute('content', meta.getAttribute('content').replace(oldText, newText));
