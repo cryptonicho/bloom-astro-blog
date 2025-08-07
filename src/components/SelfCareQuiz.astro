@@ -3,7 +3,7 @@
 ---
 
 <div id="self-care-quiz" class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-lg p-6 border border-rose-200 my-8">
-  <h3 class="text-xl font-bold text-rose-700 mb-4 text-center">🎯 Find Your Perfect Self-Care App</h3>
+  <h3 class="text-xl font-bold text-rose-700 mb-4 text-center">🎯 Find Your Perfect Self-Care Planner</h3>
   
   <div id="quiz-questions" class="space-y-4">
     <div class="question" data-question="1">
@@ -51,19 +51,19 @@
     </div>
 
     <div class="question hidden" data-question="3">
-      <p class="font-semibold text-gray-800 mb-3">3. How do you prefer to access your self-care tools?</p>
+      <p class="font-semibold text-gray-800 mb-3">3. How do you prefer to plan your self-care?</p>
       <div class="space-y-2">
         <label class="flex items-center space-x-3 cursor-pointer">
-          <input type="radio" name="q3" value="web" class="text-rose-500">
-          <span>Web browser (computer and mobile)</span>
+          <input type="radio" name="q3" value="digital" class="text-rose-500">
+          <span>Digital planner (accessible anywhere)</span>
         </label>
         <label class="flex items-center space-x-3 cursor-pointer">
-          <input type="radio" name="q3" value="mobile" class="text-rose-500">
-          <span>Mobile app only</span>
+          <input type="radio" name="q3" value="paper" class="text-rose-500">
+          <span>Physical paper planner</span>
         </label>
         <label class="flex items-center space-x-3 cursor-pointer">
-          <input type="radio" name="q3" value="both" class="text-rose-500">
-          <span>Both web and mobile options</span>
+          <input type="radio" name="q3" value="flexible" class="text-rose-500">
+          <span>I'm flexible - whichever works best</span>
         </label>
       </div>
     </div>
@@ -78,16 +78,19 @@
     </button>
   </div>
 
-  <div id="quiz-result" class="hidden mt-6 p-4 bg-white rounded-lg border border-rose-300">
+  <div id="quiz-result" class="hidden mt-6 p-6 bg-white rounded-lg border border-rose-300">
     <div class="text-center">
-      <h4 class="text-lg font-bold text-rose-700 mb-2">🌟 Your Perfect Match: Bloom!</h4>
-      <p class="text-gray-700 mb-4">Based on your answers, Bloom Self-Care Planner is the ideal app for you. Here's why:</p>
-      <ul id="recommendation-reasons" class="text-left text-sm text-gray-600 mb-4 space-y-1">
+      <h4 class="text-2xl font-bold text-rose-700 mb-3">🌟 Your Perfect Match: Bloom!</h4>
+      <p class="text-gray-700 mb-4">Based on your answers, Bloom Self-Care Planner is the ideal solution for you. Here's why:</p>
+      <ul id="recommendation-reasons" class="text-left text-sm text-gray-600 mb-6 space-y-2">
         <!-- Reasons will be populated by JavaScript -->
       </ul>
-      <a href="https://www.selfcareplanner.app/?autoQuiz=true" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-        Try Bloom Free →
-      </a>
+      <div class="mt-6">
+        <a href="https://www.selfcareplanner.app/?autoQuiz=true" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white !text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" style="color: white;">
+          Start Your Free Journey with Bloom →
+        </a>
+        <p class="text-xs text-gray-500 mt-3">No credit card required • 100% free to start</p>
+      </div>
     </div>
   </div>
 </div>
@@ -176,36 +179,31 @@
     // Show result
     function showResult() {
       const questionsEl = document.getElementById('quiz-questions');
-      const buttonsEl = document.querySelector('.flex.justify-between');
+      const buttonsEl = nextBtn?.parentElement;
       
       if (questionsEl) questionsEl.classList.add('hidden');
-      if (buttonsEl) buttonsEl.classList.add('hidden');
+      if (buttonsEl) buttonsEl.style.display = 'none';
       if (result) result.classList.remove('hidden');
 
-      // Generate personalized reasons
+      // Generate exactly 3 personalized reasons
       const reasons: string[] = [];
       
+      // First reason based on their main challenge
       if (answers.q1 === 'time') {
-        reasons.push('✅ Bloom is web-based, so you can access it quickly from your computer during work breaks');
+        reasons.push('✅ Quick 3-minute daily check-ins that fit into your busiest days');
       } else if (answers.q1 === 'routine') {
-        reasons.push('✅ Bloom helps you build consistent self-care habits with gentle daily reminders');
+        reasons.push('✅ Build lasting self-care habits with gentle daily reminders');
       } else if (answers.q1 === 'overwhelm') {
-        reasons.push('✅ Bloom provides a simple, calming interface that reduces overwhelm');
+        reasons.push('✅ Simple, calming interface that makes self-care feel effortless');
       } else if (answers.q1 === 'motivation') {
-        reasons.push('✅ Bloom encourages you gently without pressure, helping maintain long-term motivation');
+        reasons.push('✅ Stay motivated with streaks and encouraging progress tracking');
       }
 
-      if (answers.q2 === 'planning') {
-        reasons.push('✅ Bloom excels at personalized self-care planning and organization');
-      } else if (answers.q2 === 'variety') {
-        reasons.push('✅ Bloom offers diverse self-care activities across multiple wellness dimensions');
-      }
-
-      if (answers.q3 === 'web' || answers.q3 === 'both') {
-        reasons.push('✅ Bloom works perfectly on web browsers, accessible from any device');
-      }
-
-      reasons.push('✅ Completely free with no ads and full privacy protection');
+      // Second reason - always highlight it's designed for women
+      reasons.push('✅ Designed specifically for women who want to prioritize their wellbeing');
+      
+      // Third reason - always highlight it's free
+      reasons.push('✅ Completely free to start - no credit card required');
 
       const reasonsList = document.getElementById('recommendation-reasons');
       if (reasonsList) {

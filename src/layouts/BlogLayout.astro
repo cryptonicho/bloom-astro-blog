@@ -49,12 +49,6 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://selfcareplanner.app');
     <!-- Article content -->
     <article class="relative z-10 max-w-4xl mx-auto px-6 py-12 lg:py-16">
       <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-        {image && (
-          <div class="relative h-64 md:h-96 w-full">
-            <img src={image} alt={title} class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-          </div>
-        )}
         <div class="p-8 md:p-12 lg:p-16">
           <header class="mb-10">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 leading-tight">{title}</h1>
@@ -82,6 +76,13 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://selfcareplanner.app');
             </div>
           )}
         </header>
+        
+        {image && (
+          <div class="relative h-64 md:h-96 w-full mb-10 rounded-lg overflow-hidden">
+            <img src={image} alt={title} class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+        )}
         
         <div class="prose prose-lg prose-rose max-w-none
           prose-headings:font-bold prose-headings:text-gray-900
